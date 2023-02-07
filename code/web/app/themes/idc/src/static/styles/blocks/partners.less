@@ -1,0 +1,132 @@
+/*
+  Name:               partners.less
+  Description:        Specific styles for the masthead blocks
+  Version:            1.0.0
+  Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Partners Block **/
+.c-partners-block {
+  position: relative;
+  padding: 6rem 0 2rem;
+
+  &__intro,
+  &__content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__intro {
+    margin-bottom: 3rem;
+
+    h1, h2, h3, h4, h5, h6,
+    .wp-block-button {
+      flex: 0 1 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+  }
+
+  &__content {
+    column-gap: 10%;
+    row-gap: 2rem;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    flex: 0 1 45%;
+    width: 100%;
+    text-align: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/
+
+/* Medium */
+@media (min-width: @md) {
+  /** Partners Block **/
+  .c-partners-block {
+
+    &__content {
+      column-gap: 8%;
+    }
+
+    &__logo {
+      flex: 0 1 19%;
+    }
+  }
+}
+
+/* Large */
+@media (min-width: @lg) {
+  /** Partners Block **/
+  .c-partners-block {
+
+    /* ALIGN LEFT */
+    &--align-left {
+      text-align: left;
+
+      .c-partners-block__intro {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        * {
+          flex: 0 1 auto;
+        }
+      }
+
+      .c-partners-block__content {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .c-partners-block__logo {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+      }
+    }
+  }
+}
+
+/* Admin-Only Styles */
+.wp-block-acf-partners .c-partners-block {
+
+  /* ALIGN LEFT */
+  &--align-left .c-partners-block__intro {
+
+    .block-editor-inner-blocks {
+      width: 100%;
+
+      .block-editor-block-list__layout {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+
+        * {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

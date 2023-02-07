@@ -1,0 +1,51 @@
+{
+    "key": "group_62ab3d8ba7b59",
+    "title": "Block - Author",
+    "fields": [
+        {
+            "key": "field_62ab3e2887aa7",
+            "label": "Author",
+            "name": "author",
+            "type": "relationship",
+            "instructions": "Choose which Team Member to display as the post's Author. You must choose a team member in order for the block to display.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "team-members"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 1,
+            "max": 1,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/author"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1656685181
+}

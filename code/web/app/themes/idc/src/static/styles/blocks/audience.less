@@ -1,0 +1,96 @@
+/*
+	Name:				audience.less
+	Description:        Specific styles for audience image & blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+@offset: 20%;
+
+/** Audience Image Block **/
+.c-audience-image-block {
+  max-width: 36.75rem;
+  width: 90%;
+  margin: 0 auto (@offset / 2);
+
+  &__img,
+  &__content {
+    position: relative;
+  }
+
+  &__img {
+    .responsive-height();
+  }
+  &__background,
+  &__foreground {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+  }
+
+  &__background {
+    border-radius: 50%;
+    bottom: 0;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      display: block;
+      bottom: 0;
+      position: absolute;
+      height: 50%;
+      width: 100%;
+    }
+
+    &--charcoal::after {
+      background-color: @charcoal;
+    }
+    &--gold::after {
+      background-color: @gold;
+    }
+    &--purple::after {
+      background-color: @purple;
+    }
+    &--teal::after {
+      background-color: @teal;
+    }
+    &--teal-light::after {
+      background-color: @tealLight;
+    }
+    &--teal-medium::after {
+      background-color: @tealMedium;
+    }
+    &--teal-dark::after {
+      background-color: @tealDark;
+    }
+  }
+
+  &__foreground {
+    z-index: 2;
+
+    .viewport {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      clip-path: inset((@offset * -1) 0 0 0 round 0 0 50% 50%);
+      .responsive-height();
+
+      img {
+        position: absolute;
+        top: @offset * -1;
+        z-index: 2;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/

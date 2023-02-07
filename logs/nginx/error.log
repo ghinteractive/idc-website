@@ -1,0 +1,3 @@
+2022/08/04 16:18:57 [error] 24#24: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.21, server: idc.docker.localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.4:9000", host: "idc.docker.localhost"
+2022/08/04 16:23:25 [error] 24#24: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.21, server: idc.docker.localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.4:9000", host: "idc.docker.localhost"
+2022/08/04 16:30:18 [error] 24#24: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.21, server: idc.docker.localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.4:9000", host: "idc.docker.localhost"

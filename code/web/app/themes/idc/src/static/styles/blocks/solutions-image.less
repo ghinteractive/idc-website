@@ -1,0 +1,121 @@
+/*
+	Name:				        solutions-image.less
+	Description:        Specific styles for the solutions image blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+@offset: 20%;
+
+/** Masthead Block **/
+.c-solutions-image-block {
+  width: 90%;
+  margin: 0 auto (@offset / 2);
+  position: relative;
+  .responsive-height(130%);
+
+  &__technology,
+  &__background,
+  &__foreground,
+  &__border {
+    width: 100%;
+    position: absolute;
+  }
+
+  &--technology-color-teal &__technology svg {
+    stroke: @teal;
+  }
+
+  &--technology-color-purple &__technology svg {
+    stroke: @purple;
+  }
+
+  &--technology-color-gold &__technology svg {
+    stroke: @gold;
+  }
+
+  &--technology-color-charcoal &__technology svg {
+    stroke: @charcoal;
+  }
+
+  &--background-color-teal &__background {
+    background-color: @teal;
+  }
+
+  &--background-color-purple &__background {
+    background-color: @purple;
+  }
+
+  &--background-color-gold &__background {
+    background-color: @gold;
+  }
+
+  &--background-color-charcoal &__background {
+    background-color: @charcoal;
+  }
+
+  &__technology {
+    top: 0;
+    z-index: 1;
+
+    svg {
+      display: block;
+      width: 75%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  &__background {
+    border-radius: 50%;
+    bottom: 0;
+    .responsive-height();
+  }
+
+  &__foreground {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+
+    .viewport {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      clip-path: inset((@offset * -1) 0 0 0 round 0 0 50% 50%);
+      .responsive-height();
+
+      img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: @offset * -1;
+        z-index: 2;
+      }
+    }
+  }
+
+  &__border {
+    width: 120%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    left: (@offset / 2 * -1);
+    bottom: (@offset / 2 * -1);
+    z-index: -1;
+    .responsive-height();
+
+    &::after {
+      position: absolute;
+      width: 100%;
+      background: url('../images/dot-seamless-pattern.svg') repeat left top / 100% scroll;
+      left: 0;
+      right: 0;
+      top: 50%;
+      bottom: 0;
+    }
+  }
+}

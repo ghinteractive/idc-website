@@ -1,0 +1,44 @@
+{
+    "key": "group_629a17d54df1e",
+    "title": "Block - Solutions",
+    "fields": [
+        {
+            "key": "field_629cbdfa9fc0e",
+            "label": "Enable Flip Order",
+            "name": "flip",
+            "type": "true_false",
+            "instructions": "Enable \"Flip Order\" to place the image on the left and content on the right. By default, the content is displayed on the left with the image on right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Flip",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Enable",
+            "ui_off_text": "Disable"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/solutions-block"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1654541159
+}

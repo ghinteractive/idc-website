@@ -1,0 +1,128 @@
+/*
+    Name:               company-info.less
+    Description:        Company Info Widget specific styles for the theme.
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+@import '../fontawesome/fontawesome';
+@import '../fontawesome/regular';
+@import '../fontawesome/brands';
+
+/** Widget Area : Company Information */
+.w-company-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  /* company logo */
+  &__logo img {
+    max-width: 15.25rem;
+    width: 100%;
+    height: auto;
+  }
+
+  /* links */
+  a {
+    color: @white;
+    text-decoration: none;
+  }
+
+  &__tagline p {
+    margin: 0;
+    color: @white;
+  }
+
+  &__contact {
+    .address,
+    .phone-email {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+    }
+    .phone-email a {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* icons */
+  &__icon {
+    color: @teal;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+  }
+
+  &__social-icon {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      content: '';
+      top: 0;
+      left: 0;
+      background: @teal;
+      z-index: -1;
+    }
+  }
+
+  /* phone and email links */
+  .phone {
+    padding-right: 2rem;
+  }
+}
+// Provide styles in Admin of these Widgets
+div[data-widget-area-id='footer-col-one'] {
+  font-family: 'Urbanist', sans-serif;
+  background: @purple;
+
+  p,
+  a {
+    color: @white;
+  }
+}
+/* Media Queries
+----------------------------*/
+/* Medium = 786px */
+@media (min-width: @md) {
+  /** Widget Area : Company Information */
+  .w-company-info {
+    /* company logo */
+    &__logo img {
+      max-width: 12.25rem;
+    }
+
+    &__contact {
+      .phone-email {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

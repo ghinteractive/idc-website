@@ -1,0 +1,53 @@
+{
+    "key": "group_6272c242a8a09",
+    "title": "Block - Masthead Page",
+    "fields": [
+        {
+            "key": "field_6272c253ee7f8",
+            "label": "Select Color Theme",
+            "name": "select_color_theme",
+            "type": "select",
+            "instructions": "Select the color theme to apply to this Masthead Page. The color theme affects the featured image graphic and the background gradient used in the Masthead.\r\n\r\nSelecting default will remove the option to add a feature image.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "charcoal": "Charcoal",
+                "gold": "Gold",
+                "purple": "Purple",
+                "teal": "Teal",
+                "default": "Default"
+            },
+            "default_value": "teal",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/masthead-page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1656092493
+}

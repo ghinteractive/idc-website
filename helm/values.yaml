@@ -1,0 +1,253 @@
+# Global Options
+nameOverride: ""
+fullnameOverride: ""
+environment: development
+hostName: localhost:8080
+replicaCount: 1
+
+# Varnish Options
+varnish:
+  enabled: false
+  backend: {}
+    # host: example-http
+    # port: 8080
+  purgeWhitelist:
+    - "127.0.0.1"
+    - "localhost"
+  image:
+    repository: varnish
+    pullPolicy: IfNotPresent
+    tag: "6.6.1"
+
+# Wordpress Options
+wordpress:
+  port: 9000
+  uploads:
+    dir: uploads
+    url: uploads
+  image:
+    repository: 557798128580.dkr.ecr.us-east-1.amazonaws.com/idc-website
+    pullPolicy: Always
+    tag: "latest"
+
+# NGINX Options
+nginx:
+  port: 8080
+  image:
+    repository: nginx
+    pullPolicy: IfNotPresent
+    tag: "1.21.1-alpine"
+  redirects:
+    - from: ^/ilum-insight-targets-some-of-the-most-important-things-that-we-do-in-stewardship-clinical-pharmacy-specialist/?$
+      to: /testimonials
+    - from: ^/now-that-weve-been-working-with-id-connect-we-dont-transfer/?$
+      to: /testimonials
+    - from: ^/the-id-connect-providers-nail-a-comprehensive-diagnosis-each-and-every-time/?$
+      to: /testimonials
+    - from: ^/how-telemedicine-expands-care/?$
+      to: /testimonials
+    - from: ^/ilum-insight-has-been-a-wonderful-tool-infection-prevention-and-control-specialist-bsph/?$
+      to: /testimonials
+    - from: ^/my-feedback-is-that-ilum-far-surpasses-ipc-mph-msn-rn-cic-jameson/?$
+      to: /testimonials
+    - from: ^/patients-are-getting-the-expert-care-they-deserve/?$
+      to: /testimonials
+    - from: ^/the-quality-of-the-consult-is-excellent-cmo/?$
+      to: /testimonials
+    - from: ^/reduce-costly-transfers/?$
+      to: /testimonials
+    - from: ^/fantastic-innovating-revolutionary-id-physician/?$
+      to: /testimonials
+    - from: ^/ilum-insight-targets-some-of-the-most-important-things-that-we-do-in-stewardship-clinical-pharmacy-specialist/?$
+      to: /testimonials
+    - from: ^/now-that-weve-been-working-with-id-connect-we-dont-transfer/?$
+      to: /testimonials
+    - from: ^/the-id-connect-providers-nail-a-comprehensive-diagnosis-each-and-every-time/?$
+      to: /testimonials
+    - from: ^/how-telemedicine-expands-care/?$
+      to: /testimonials
+    - from: ^/ilum-insight-has-been-a-wonderful-tool-infection-prevention-and-control-specialist-bsph/?$
+      to: /testimonials
+    - from: ^/my-feedback-is-that-ilum-far-surpasses-ipc-mph-msn-rn-cic-jameson/?$
+      to: /testimonials
+    - from: ^/patients-are-getting-the-expert-care-they-deserve/?$
+      to: /testimonials
+    - from: ^/the-quality-of-the-consult-is-excellent-cmo/?$
+      to: /testimonials
+    - from: ^/flipping-the-model-for-id-care-upmc-telemedicine-companys-dr-rima-abdel-massih/?$
+      to: /news-resources
+    - from: ^/upmcs-new-infectious-disease-firm-will-provide-care-for-smaller-hospitals/?$
+      to: /news-resources
+    - from: ^/telemedicine-helps-hospitals-gain-infectious-disease-expertise/?$
+      to: /news-resources
+    - from: ^/upmc-forms-telemedicine-company-to-tackle-infectious-disease/?$
+      to: /news-resources
+    - from: ^/upmc-telehealth-spinoff-enhances-its-infectious-disease-resources/?$
+      to: /news-resources
+    - from: ^/upmc-infectious-disease-spinout-acquires-merck-assets/?$
+      to: /news-resources
+    - from: ^/upmc-launches-new-telemedicine-company-focused-on-infectious-disease/?$
+      to: /news-resources
+    - from: ^/infectious-disease-connect-combines-with-ilum-health-solutions/?$
+      to: /news-resources
+    - from: ^/opgen-expands-partnership-with-new-york-state-department-of-health-and-idc-to-detect-antimicrobial-resistant-infections/?$
+      to: /news-resources
+    - from: ^/upmc-telemedicine-company-combines-with-merck-4-things-to-know/?$
+      to: /news-resources
+    - from: ^/legal/?$
+      to: /terms-of-use
+    - from: ^/idc-physicians/?$
+      to: /about/our-team/
+    - from: ^/virtual-stewardship-and-ilum-insight-by-the-numbers-pdf/?$
+      to: /virtual-stewardship-and-ilum-insight-by-the-numbers
+    - from: ^/virtual-stewardship-and-ilum-insight-by-the-numbers-form/?$
+      to: /virtual-stewardship-and-ilum-insight-by-the-numbers
+    - from: ^/klas-report-form/?$
+      to: /klas-spotlight-infectious-disease-connect
+    - from: ^/klas-report-pdf/?$
+      to: /klas-spotlight-infectious-disease-connect
+    - from: ^/about-us/testimonials/?$
+      to: /testimonials
+    - from: ^/news-events/?$
+      to: /news-resources
+    - from: ^/what-we-do/?$
+      to: /about
+    - from: ^/iluminate-your-practice-with-our-infectious-diseases-guidance-app-tuesday-june-29th/?$
+      to: /news-resources
+    - from: ^/iluminate-your-practice-with-our-infectious-diseases-guidance-app-thursday-june-24th/?$
+      to: /news-resources
+    - from: ^/iluminate-your-practice-with-our-infectious-diseases-guidance-app-wednesday-june-23rd/?$
+      to: /news-resources
+    - from: ^/virtual-stewardship-qanda/?$
+      to: /news-resources
+    - from: ^/virtual-stewardship-effective-antimicrobial-management-video/?$
+      to: /news-resources
+    - from: ^/new-strategies-to-keep-complex-patients-in-your-hospital-and-boost-revenue-video-2/?$
+      to: /news-resources
+    - from: ^/improve-patient-care-optimize-roi-and-adhere-to-cms-guidelines/?$
+      to: /news-resources
+    - from: ^/improve-patient-care-optimize-roi-and-adhere-to-cms-guidelines-video-2/?$
+      to: /news-resources
+    - from: ^/academic-tele-id-improves-quality-three-hospitals-share-their-experiences-video/?$
+      to: /news-resources
+    - from: ^/about-us/?$
+      to: /about
+    - from: ^/what-we-do/telemedicine/?$
+      to: /solutions/services/telemedicine
+    - from: ^/what-we-do/tele-ipc/?$
+      to: /solutions/services/tele-infection-prevention-control
+    - from: ^/what-we-do/ilum-inform/?$
+      to: /solutions/technology/ilum-inform
+    - from: ^/what-we-do/ilum-insight/?$
+      to: /solutions/technology/ilum-insight
+    - from: ^/what-we-do/virtual-stewardship-service/?$
+      to: /solutions/services/virtual-stewardship
+    - from: ^/resources/?$
+      to: /news-resources
+    - from: ^/contact-us/?$
+      to: /contact
+    - from: ^/about-us/careers/?$
+      to: /about/careers
+    - from: ^/category/articles/?$
+      to: /news-resources
+    - from: ^/category/press-releases/?$
+      to: /news-resources
+    - from: ^/category/testimonials/?$
+      to: /testimonials
+    - from: ^/category/testimonials-solutions/?$
+      to: /testimonials
+    - from: ^/category/testimonials-services/?$
+      to: /testimonials
+    - from: ^/category/uncategorized/?$
+      to: /news-resources
+    - from: ^/category/webinarsandpodcasts/?$
+      to: /news-resources
+
+# MariaDB Options
+### NOTE: Leaving mariadb.enabled set to false means that Wordpress will attempt to connect
+###       to an external database using the provided credentials. The password field must
+###       still be set, as this information is still kept in a separate secret.
+mariadb:
+  enabled: true
+  # host: external.host.domain.com
+  # prefix: wp_
+  auth:
+    database: bedrock
+    username: bedrock
+    # password: <secret>
+    existingSecret: example-mariadb-secrets
+
+# Uploads Folder Persistence Volume Claim Options
+uploadsPVC:
+  enabled: false
+  annotations: {}
+    # helm.sh/resource-policy: keep
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 5Gi
+
+#Service Options
+service:
+  type: LoadBalancer
+  ports:
+    wordpress:
+      port: 9000
+    nginx:
+      port: 8080
+    varnish:
+      port: 80
+
+# Ingress Options
+ingress:
+  enabled: false
+  annotations: {}
+    # nginx.ingress.kubernetes.io/proxy-body-size: 32m
+    # cert-manager.io/cluster-issuer: letsencrypt-production
+  hosts: []
+  tls: []
+  #  - secretName: bedrock-example-tls
+  #    hosts:
+  #      - *commonName
+
+#Deployment Options
+deploymentAnnotations: {}
+
+podAnnotations: {}
+
+imagePullSecrets: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Service Account Options
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+# Elasticsearch Settings
+elasticsearch:
+  enabled: false
+  service:
+    name: elasticsearch-master
+    namespace: gh-system
+    port: 9200
+  security:
+    enabled: true
+    auth:
+      username: elastic
+      # password: <secret>
+  https:
+    enabled: true
+    certificatePath: /etc/ssl/cert.pem
+  autocomplete:
+    enabled: true
+    indices:
+      - '%[1]s-%[2]s-term-1'
+      - '%[1]s-%[2]s-post-1'
+    endpoint:
+      src: /es-search
+      dest: _search

@@ -1,0 +1,52 @@
+/*
+    Name:               posts-single.less
+    Description:        Specific styles for blog posts
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+article.content-post-single {
+
+    /* images */
+    .wp-block-image {
+
+        &.alignwide {
+            position: relative;
+            left: 10%;
+            width: 120%;
+            margin-left: -20%;
+        }
+
+        figcaption {
+            color: @teal;
+        }
+    }
+
+    /* links */
+    a:not(.wp-block-button__link) {
+        color: @purple;
+
+        &:hover,
+        &:focus {
+            color: @teal;
+            text-decoration: underline;
+        }
+
+        &:active {
+            color: @teal;
+            text-decoration: none;
+        }
+
+        &:visited {
+            color: @teal;
+        }
+    }
+}
+
+@media (min-width: @lg) {
+    article.content-post-single {
+        max-width: @md;
+    }
+}

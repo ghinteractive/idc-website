@@ -1,0 +1,19 @@
+{
+    "name": "gh-wp-base-theme",
+    "description": "The official Garrison Hughes Interactive base Wordpress theme template driven by Gulp, Bower and npm",
+    "main": "gulpfile.babel.js",
+    "authors": [
+        "Garrison Hughes <interactive@garrisonhughes.com> (http://www.garrisonhughes.com)"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "jquery": "^3.1.0"
+    }
+}

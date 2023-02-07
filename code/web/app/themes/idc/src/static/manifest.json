@@ -1,0 +1,109 @@
+{
+  "dependencies": {
+    "blocks.js": {
+      "files": [
+        "scripts/blocks/accordion.js",
+        "scripts/blocks/career-opportunities.js"
+      ]
+    },
+    "blog.js": {
+      "files": ["scripts/blog.js"]
+    },
+    "extend-blocks.js": {
+      "files": ["scripts/extend-blocks.js"]
+    },
+    "register-custom-icons.js": {
+      "files": ["scripts/register-custom-icons.js"]
+    },
+    "scripts.js": {
+      "files": [
+        "scripts/core.js",
+        "scripts/contact-form.js",
+        "scripts/gated-media.js"
+      ]
+    },
+    "swiper-bundle.min.js": {
+      "files": ["scripts/swiper/swiper-bundle.min.js"]
+    },
+    "swiper.js": {
+      "files": ["scripts/swiper/swiper.js"]
+    },
+    "team-members.js": {
+      "files": ["scripts/team-members.js"]
+    },
+    "testimonials.js": {
+      "files": ["scripts/testimonials.js"]
+    },
+    "blocks.css": {
+      "files": [
+        "styles/blocks/accordion.less",
+        "styles/blocks/animated-chart.less",
+        "styles/blocks/audience.less",
+        "styles/blocks/author.less",
+        "styles/blocks/career-opportunities.less",
+        "styles/blocks/feature-image.less",
+        "styles/blocks/masthead.less",
+        "styles/blocks/news-resources.less",
+        "styles/blocks/partners.less",
+        "styles/blocks/solutions.less",
+        "styles/blocks/solutions-image.less",
+        "styles/blocks/team-slider.less",
+        "styles/blocks/testimonials.less"
+      ]
+    },
+    "extend-blocks.css": {
+      "files": ["styles/extend-blocks.less"]
+    },
+    "normalize.css": {
+      "files": ["styles/normalize.less"]
+    },
+
+    "posts.css": {
+      "files": [
+        "styles/posts/posts.less",
+        "styles/posts/posts-single.less",
+        "styles/posts/posts-social-share.less"
+      ]
+    },
+    "styles.css": {
+      "files": [
+        "styles/core.less",
+        "styles/extend-blocks.less",
+        "styles/footer.less",
+        "styles/forms.less",
+        "styles/functions.less",
+        "styles/navigation.less",
+        "styles/inputs.less",
+        "styles/search-results.less"
+      ]
+    },
+    "swiper.css": {
+      "files": ["styles/swiper/swiper.less"]
+    },
+    "widgets.css": {
+      "files": ["styles/widgets/company-info.less"]
+    },
+
+    "fonts": {
+      "files": ["webfonts/**/*"]
+    },
+    "meta": {
+      "files": ["meta/**/*"]
+    },
+    "lottie": {
+      "files": ["lottie/**/*"]
+    },
+    "images": {
+      "files": ["images/**/*"]
+    }
+  },
+  "paths": {
+    "source": "src/static/",
+    "dist": "dist/static/"
+  },
+  "config": {
+    "devUrl": "idc.docker.localhost",
+    "stagingUrl": "http://example.garrisonhughes.site",
+    "productionUrl": "http://example.com"
+  }
+}

@@ -1,0 +1,303 @@
+/*
+	Name:				        masthead.less
+	Description:        Specific styles for the masthead blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+@import '../fontawesome/fontawesome';
+@import '../fontawesome/regular';
+
+/** Masthead Block **/
+.c-masthead-block {
+  padding-top: 7.5rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    top: 0;
+    background: url('../images/idc_masthead_page_bg_default.png') no-repeat center top / cover scroll;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -2;
+  }
+
+  &--charcoal,
+  &--gold,
+  &--purple,
+  &--teal {
+    &::after {
+      max-height: 21.875rem;
+      z-index: -1;
+      position: absolute;
+    }
+  }
+
+  &--charcoal {
+    &::after {
+      background-image: url('../images/idc_masthead_page_bg_charcoal.png');
+    }
+  }
+  &--gold {
+    &::after {
+      background-image: url('../images/idc_masthead_page_bg_gold.png');
+    }
+  }
+
+  &--purple {
+    &::after {
+      background-image: url('../images/idc_masthead_page_bg_purple.png');
+    }
+  }
+
+  &--teal {
+    &::after {
+      background-image: url('../images/idc_masthead_page_bg_teal.png');
+    }
+  }
+
+  &:not(&--default) &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+
+    &--reverse {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+
+  &--contact &__content {
+    align-self: flex-start;
+  }
+
+  &__content {
+    max-width: 44.5rem;
+  }
+
+  &:not(&--default) &__content {
+    flex: 1;
+    max-width: 31rem;
+    width: 100%;
+
+    &--wide {
+      max-width: 44.75rem;
+    }
+  }
+
+  &__col {
+    position: relative;
+    max-width: 36.75rem;
+    width: 100%;
+    flex: 1;
+
+    &--wide {
+      max-width: 44.75rem;
+    }
+    a {
+      display: block;
+    }
+  }
+
+  &__square-container {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.25rem 1.25rem 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      border-radius: 0.75rem;
+      border: 2px dashed @teal;
+      top: 0.5rem;
+      left: 0.5rem;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      z-index: 3;
+      margin: auto;
+    }
+  }
+
+  &__img-square {
+    border-radius: 0.75rem;
+    max-width: 44.75rem;
+    max-height: 409px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-position: center;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 1.35rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    overflow: hidden;
+    max-width: 31.25rem;
+    margin: auto;
+
+    &--fill {
+      max-height: 31.25rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+    }
+
+    &--fill &--feat {
+      width: 100%;
+      height: 100%;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--overlay {
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+
+    &--feat {
+      position: relative;
+    }
+
+    img {
+      max-width: 100%;
+      position: relative;
+      z-index: 1;
+      transform: translateY(0);
+      transition: transform 0.25s ease-out;
+    }
+  }
+
+  /* masthead contact block - form */
+  &__form {
+    width: 100%;
+  }
+
+  /* masthead contact block - contact info */
+  &__info a {
+    display: flex;
+    column-gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.25s ease-out;
+
+    &:hover {
+      color: @purple;
+      opacity: 0.8;
+    }
+  }
+
+  &__border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    bottom: 0;
+    right: 0;
+    transform-origin: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      background-image: url('../images/dot-seamless-pattern.svg');
+      background-repeat: repeat;
+      background-size: 100%;
+    }
+
+    &--round {
+      border-radius: 50%;
+      transform: rotate(45deg);
+
+      &::after {
+        width: 50%;
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    &--square {
+      border-radius: 1.5rem;
+
+      &::after {
+        width: 100%;
+        background-size: 30%;
+        top: 1rem;
+        left: 1rem;
+      }
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/
+
+/* Small */
+@media (min-width: @sm) {
+  /** Masthead Block **/
+  .c-masthead-block {
+    &::after {
+      max-height: 31.875rem;
+    }
+  }
+}
+/* Medium */
+@media (min-width: @md) {
+  /** Masthead Block **/
+  .c-masthead-block {
+    &::after {
+      max-height: 45rem;
+    }
+  }
+}
+
+/* Large */
+@media (min-width: @lg) {
+  /** Masthead Block **/
+  /** Masthead Blog Block **/
+  .c-masthead-block {
+    &:not(&--default) &__inner {
+      column-gap: 2rem;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+  }
+}
+
+/* XL Large */
+@media (min-width: @xl) {
+  /** Masthead Block **/
+  .c-masthead-block {
+    &::after {
+      background-size: contain;
+    }
+    &__col--wide {
+      flex-basis: 100%;
+    }
+    &__col + &__content {
+      width: 40%;
+    }
+  }
+}

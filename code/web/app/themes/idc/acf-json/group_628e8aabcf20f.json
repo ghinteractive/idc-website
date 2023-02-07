@@ -1,0 +1,417 @@
+{
+    "key": "group_628e8aabcf20f",
+    "title": "Block - Testimonials",
+    "fields": [
+        {
+            "key": "field_628e8c3da431a",
+            "label": "Select Testimonial Type",
+            "name": "select_testimonial_type",
+            "type": "select",
+            "instructions": "Select the type of Testimonial.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary",
+                "simple": "Simple",
+                "video": "Video"
+            },
+            "default_value": "primary",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_628e8ba1a4319",
+            "label": "Select Color Theme",
+            "name": "select_color_theme",
+            "type": "select",
+            "instructions": "Select the color theme to apply to this Testimonial section. The color theme affects the elements displayed.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "!=",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "gold": "Gold",
+                "purple": "Purple",
+                "teal": "Teal"
+            },
+            "default_value": "teal",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_628e92de624d3",
+            "label": "Quote",
+            "name": "quote",
+            "type": "textarea",
+            "instructions": "Enter the quote.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "primary"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Quote",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_628e92e2624d4",
+            "label": "Name\/Title",
+            "name": "name_title",
+            "type": "text",
+            "instructions": "Enter the name and title (optional) of the author.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "primary"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Name\/Title",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_628e92e7624d5",
+            "label": "Company",
+            "name": "company",
+            "type": "text",
+            "instructions": "Enter the company name.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "primary"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Company name",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_628e8dae54089",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Select the image to display along with this testimonial. Background removal from the photo and a PNG 24 file type is required for these images (headshots) to display properly.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "primary"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "png"
+        },
+        {
+            "key": "field_628e8c9754085",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "type": "repeater",
+            "instructions": "Add individual Testimonials.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "simple"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 1,
+            "max": 10,
+            "layout": "block",
+            "button_label": "Add Testimonial",
+            "sub_fields": [
+                {
+                    "key": "field_628e8cc954086",
+                    "label": "Quote",
+                    "name": "quote",
+                    "type": "textarea",
+                    "instructions": "Enter the quote.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Quote",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop"
+                },
+                {
+                    "key": "field_628e8d0754087",
+                    "label": "Name\/Title",
+                    "name": "name_title",
+                    "type": "text",
+                    "instructions": "Enter the name and title (optional) of the author.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Name\/Title",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_628e8d6e54088",
+                    "label": "Company",
+                    "name": "company",
+                    "type": "text",
+                    "instructions": "Enter the company name.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Company name",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_628e8e5e5408a",
+            "label": "Show Call to Action Button",
+            "name": "show_call_to_action_button",
+            "type": "true_false",
+            "instructions": "Select True to display the \"More Customer Results\" button below the Testimonials.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "!=",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_628e8f2000431",
+            "label": "Call to Action Link",
+            "name": "call_to_action_link",
+            "type": "link",
+            "instructions": "Enter the link users will be redirected to when clicking the \"More Customer Results\" button.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8e5e5408a",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "!=",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_629a44217362e",
+            "label": "Video URL",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "Enter the Youtube or Vimeo URL for this video. This URL will automatically be used to create the proper Embed code to add the video player into the page.\r\nUse the following URL formats:\r\nVimeo example: https:\/\/vimeo.com\/123456\r\nYouTube example: https:\/\/www.youtube.com\/watch?v=123456",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_629e520e6aaa0",
+            "label": "Video Poster Image",
+            "name": "video_poster_image",
+            "type": "image",
+            "instructions": "Select an image to display over the video and under the video play button for this video. If you don't select an image, only the play button will appear.\r\nAn image in a 16:9 ratio is recommended.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_628e8c3da431a",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/testimonials"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1655389360
+}

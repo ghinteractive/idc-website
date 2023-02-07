@@ -1,0 +1,115 @@
+{
+    "key": "group_6297c461ab237",
+    "title": "Block - News & Resources",
+    "fields": [
+        {
+            "key": "field_6297d70c1c100",
+            "label": "Post Options",
+            "name": "post_options",
+            "type": "select",
+            "instructions": "Select a method for loading the News & Resources posts.\r\n<br\/><br\/>\r\nAuto = Loads the most recent posts<br\/>\r\nCategory = Loads the most recent posts by selected category<br\/>\r\nManual = Select posts by hand",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto": "Auto",
+                "category": "Category",
+                "manual": "Manual"
+            },
+            "default_value": "auto",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6297c4b3dae4b",
+            "label": "Select Posts Manually",
+            "name": "posts_manual",
+            "type": "relationship",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6297d70c1c100",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": 3,
+            "return_format": "object"
+        },
+        {
+            "key": "field_6297d90dee2af",
+            "label": "Select Posts by Category",
+            "name": "posts_category",
+            "type": "taxonomy",
+            "instructions": "Select the category of posts to load.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6297d70c1c100",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/news-resources"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1654203710
+}

@@ -1,0 +1,62 @@
+# An example of a Staging environment with:
+# 1. Caching enabled
+# 2. An external database
+# 3. Persistent user uploads
+# 4. Ingress with TLS
+environment: staging
+hostName: &commonName idc.garrisonhughes.site
+
+varnish:
+  enabled: true
+  service:
+    type: ClusterIP
+  purgeWhitelist:
+    - "127.0.0.1"
+    - "localhost"
+    - "192.168.0.0/16"
+
+mariadb:
+  enabled: false
+  host: idc-telemed.ccy5divwl57m.us-east-1.rds.amazonaws.com
+  auth:
+    database: idc_telemed_com_staging
+    username: idc_telemed
+    # password: <secret>
+
+uploadsPVC:
+  enabled: true
+  annotations:
+    helm.sh/resource-policy: keep
+  accessModes:
+    - ReadWriteMany
+  storageClass: fs-0cdf42b8-efs-sc
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  class: alb
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/load-balancer-name: GHDefaultCluster-ALB
+    alb.ingress.kubernetes.io/group.name: gh-shared-alb
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-Ext-2018-06
+    alb.ingress.kubernetes.io/success-codes: 200-300,301,302
+  hosts:
+    - host: *commonName
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ .Release.Name }}-http"
+                port:
+                  name: varnish
+  tls:
+    - secretName: "{{ .Release.Name }}-tls"
+      hosts:
+        - *commonName

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  composer:
+    build:
+      context: ./docker/composer
+      args:
+        PHP_VERSION: ${PHP_VERSION:-7.4}
+    environment:
+      ACF_PRO_KEY: ${ACF_PRO_KEY}
+    volumes:
+      - ./code:/app
+    networks:
+      - default
+      - traefik
+  wp:
+    extends:
+      file: ./docker/services-common.yml
+      service: wp
+    networks:
+      - default
+      - traefik
+  node:
+    build:
+      context: ./docker/node
+      args:
+        NODE_VERSION: ${NODE_VERSION:-10}
+        FONTAWESOME_NPM_AUTH_TOKEN: ${FONTAWESOME_NPM_AUTH_TOKEN}
+    environment:
+      DEV_URL: ${NGINX_SERVER_NAME}
+    volumes:
+      - ./code/web/app/themes/idc:/theme
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external:
+      name: traefik-network

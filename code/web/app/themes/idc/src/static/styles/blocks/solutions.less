@@ -1,0 +1,85 @@
+/*
+	Name:				solutions.less
+	Description:        Specific styles for the solutions blocks and any blocks that use 50/50 gutenberg columns
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Solutions Block **/
+.c-solutions-block {
+  position: relative;
+  z-index: 1;
+
+  &__columns {
+    align-items: center;
+    justify-content: center;
+    column-gap: 3rem !important;
+
+    &--reverse,
+    &--reverse .wp-block-columns {
+      flex-direction: row-reverse;
+      /* When feature image block is in solutions block and has been flipped, change rotation of the c-feature-image-block__shadow */
+      .c-feature-image-block__shadow {
+        transform: matrix(-0.71, 0.71, 0.71, 0.71, 0, 0);
+      }
+    }
+  }
+
+  .wp-block-column&__column {
+    flex-basis: 100% !important;
+    margin-left: 0 !important; /*Necessary to overwrite core/column style */
+  }
+
+  &__column {
+    max-width: 36.75rem;
+
+    &--text {
+      order: 2;
+      max-width: 44.5rem;
+    }
+    &--img {
+      order: 1;
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/
+
+/*Medium 782px to overwrite gutenberg defaults*/
+@media (min-width: 782px) {
+  /** Solutions Block **/
+  .c-solutions-block {
+    &__columns {
+      justify-content: flex-start;
+    }
+
+    &__column {
+      flex-basis: 0 !important;
+    }
+    &__columns--reverse &__column,
+    &__columns &__column {
+      &--text {
+        order: 1;
+      }
+      &--img {
+        order: 2;
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 782px) {
+  .c-solutions-block {
+    .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:only-child) {
+      flex-basis: 100% !important;
+      flex-grow: 0;
+    }
+    .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:nth-child(even) {
+      margin-left: 0;
+    }
+  }
+}

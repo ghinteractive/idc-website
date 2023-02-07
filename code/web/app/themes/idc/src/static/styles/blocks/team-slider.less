@@ -1,0 +1,74 @@
+/*
+	Name:				team-slider.less
+	Description:        Specific styles for the team slider blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import '../fontawesome/fontawesome';
+@import '../fontawesome/regular';
+@import '../fontawesome/light';
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+.c-team-slider {
+  &__inner {
+    position: relative;
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 40%;
+    &::after {
+      .fa-icon;
+      .fal;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+
+    &::after {
+      content: @fa-var-chevron-double-left;
+    }
+  }
+
+  .swiper-button-next {
+    right: 0;
+
+    &::after {
+      content: @fa-var-chevron-double-right;
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/
+/* Medium */
+@media (min-width: @md) {
+  .c-team-slider {
+    .swiper-button-prev {
+      left: -0.75rem;
+    }
+    .swiper-button-next {
+      right: -0.75rem;
+    }
+  }
+}
+
+/* Large */
+@media (min-width: @lg) {
+  .c-team-slider {
+    .swiper-button-prev {
+      left: -1.75rem;
+    }
+    .swiper-button-next {
+      right: -1.75rem;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+/*
+	Name:				news-resources.less
+	Description:        Specific styles for News & Resources blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import '../posts/posts';
+
+/* News & Resources Block */
+.c-posts-block {
+  &__headline {
+    display: flex;
+    align-items: center;
+  }
+
+  &__cta {
+    &--desktop {
+      display: none;
+      justify-content: flex-end;
+      flex: 1;
+    }
+
+    &--mobile {
+      padding-top: 1.25rem;
+      /*this will make the button full-width */
+      a {
+        display: block;
+      }
+    }
+  }
+}
+/* Media Queries
+----------------------------*/
+/* Medium */
+@media (min-width: @md) {
+  /* News & Resources Block */
+  .c-posts-block {
+    &__cta {
+      &--desktop {
+        display: flex;
+      }
+
+      &--mobile {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,639 @@
+/*
+    Name:               testimonials.less
+    Description:        Specific styles for the testimonials blocks
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Testimonial Block **/
+.c-testimonials-block {
+  overflow: hidden;
+
+  &--headerWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &--headline {
+    color: @purple;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+  }
+  &.testimonialColor {
+    &-default {
+      background-color: fade(@charcoal, 20%);
+      .simpleButtonUp,
+      .simpleButtonDown {
+        background-color: fade(@charcoal, 20%);
+        &:hover {
+          background-color: fade(@charcoal, 40%);
+        }
+        i {
+          color: @purple;
+        }
+      }
+    }
+    &-gold {
+      background-color: fade(@gold, 20%);
+      .simpleButtonUp,
+      .simpleButtonDown {
+        background-color: fade(@gold, 20%);
+        &:hover {
+          background-color: fade(@gold, 40%);
+        }
+        i {
+          color: @purple;
+        }
+      }
+    }
+    &-purple {
+      background-color: fade(@purple, 20%);
+      .simpleButtonUp,
+      .simpleButtonDown {
+        background-color: fade(@purple, 20%);
+        &:hover {
+          background-color: fade(@purple, 40%);
+        }
+        i {
+          color: @purple;
+        }
+      }
+    }
+    &-teal {
+      background-color: fade(@teal, 20%);
+      .simpleButtonUp,
+      .simpleButtonDown {
+        background-color: fade(@teal, 20%);
+        &:hover {
+          background-color: fade(@teal, 40%);
+        }
+        i {
+          color: @purple;
+        }
+      }
+    }
+  }
+  &--video {
+    .testimonial {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .video-testimonial {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 32px 40px rgba(80, 80, 90, 0.25);
+        position: relative;
+
+        &--wide {
+          width: 60%;
+        }
+        /** Full width, non-testimonial video */
+        &--full {
+          width: 100%;
+        }
+
+        .poster {
+          background-color: rgba(255, 255, 255, 0);
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          z-index: 2;
+          padding-bottom: 56.25%;
+          position: absolute;
+
+          .icon-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: @teal;
+            box-shadow: 0 18.2313px 22.7891px rgba(60, 175, 171, 0.25);
+            width: 5.5rem;
+            height: 5.5rem;
+            border-radius: 1.25rem;
+
+            &::before {
+              position: absolute;
+              max-width: 3rem;
+              max-height: 3rem;
+              width: 100%;
+              height: 100%;
+              top: 50%;
+              left: 50%;
+              transform: translate3d(-50%, -50%, 0);
+              content: '';
+              background-repeat: no-repeat;
+              background-size: 100%;
+              background-image: url('../images/icons/Icon_Play.svg');
+              cursor: pointer;
+            }
+          }
+        }
+
+        .embed-container {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          overflow: hidden;
+          max-width: 100%;
+
+          iframe,
+          object,
+          embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      figure {
+        width: 30%;
+
+        //quote
+        blockquote {
+          margin: 0;
+          padding: 0;
+          color: @charcoal;
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+          font-weight: 400;
+
+          p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+          }
+          p:first-child {
+            &::before {
+              content: '\f10d';
+              display: block;
+              font-size: 2rem;
+              font-family: 'Font Awesome 6 Pro';
+              font-weight: 900;
+              color: @purple;
+              margin-bottom: 1rem;
+            }
+          }
+          p:last-child {
+            &::after {
+              content: '"';
+              display: inline-block;
+            }
+          }
+        }
+
+        //attributions
+        figcaption {
+          color: @purple;
+          font-size: 1.5rem;
+          line-height: 1.75rem;
+          font-weight: 900;
+          display: block;
+
+          cite {
+            font-style: normal;
+            font-weight: 900;
+            color: @teal;
+            font-size: 1rem;
+            line-height: 1.25rem;
+            display: block;
+          }
+        }
+      }
+    }
+    @media (max-width: @md) {
+      &.container--padding-y-96 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .testimonial {
+        flex-wrap: wrap;
+
+        .video-testimonial {
+          width: 100%;
+          margin-bottom: 3rem;
+        }
+
+        figure {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    }
+  }
+  &--primary {
+    //relative wrapping container to hold absolute testimonials
+    .wrapper {
+      z-index: 1;
+      position: relative;
+    }
+
+    //testimonial
+    .testimonial {
+      background-color: @white;
+      border-radius: 1.33rem;
+      padding: 2rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    //image container
+    .img-container {
+      z-index: 1;
+      width: 45%;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+
+      //mobile image in attribution is hidden on desktop
+      &.mobile {
+        display: none;
+        position: relative;
+        width: 15%;
+        transform: none;
+      }
+
+      //image wrapper
+      .img {
+        //featured image wrapper
+        .featured {
+          //background circle behind image
+          &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: @gold;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 0;
+            padding-bottom: 100%;
+            bottom: 0;
+          }
+          //image
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+            z-index: 2;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    //dotted background circle border container
+    .border {
+      position: absolute;
+      width: 100%;
+      height: 91%;
+      z-index: -1;
+      top: 9%;
+      right: 10%;
+
+      //dotted background circle
+      &::after {
+        content: '';
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        background-image: url('../images/dot-semi-seamless-pattern.svg');
+        background-repeat: no-repeat;
+        bottom: -15%;
+        right: -25%;
+      }
+    }
+
+    //figure
+    figure {
+      width: 45%;
+
+      //quote
+      blockquote {
+        margin: 0;
+        padding: 0;
+        color: @charcoal;
+        font-size: 2rem;
+        line-height: 2.5rem;
+        font-weight: 900;
+        p {
+          margin-top: 0;
+          margin-bottom: 1.5rem;
+        }
+        p:first-child {
+          &::before {
+            content: '"';
+            display: inline-block;
+          }
+        }
+        p:last-child {
+          &::after {
+            content: '"';
+            display: inline-block;
+          }
+        }
+      }
+
+      //attributions
+      .caption-group {
+        display: flex;
+        align-items: center;
+
+        figcaption {
+          color: @purple;
+          font-size: 1.5rem;
+          line-height: 1.75rem;
+          font-weight: 900;
+          display: block;
+
+          cite {
+            font-style: normal;
+            font-weight: 900;
+            color: @charcoal;
+            opacity: 0.5;
+            font-size: 1rem;
+            line-height: 1.25rem;
+            display: block;
+          }
+        }
+      }
+    }
+
+    @media (max-width: @md) {
+      figure {
+        margin: 0;
+        width: 100%;
+        blockquote {
+          font-size: 1.5rem;
+          line-height: 2rem;
+        }
+        .caption-group {
+          .img-container.mobile {
+            display: block;
+            margin-right: 1.5rem;
+            .img {
+              z-index: 2;
+              position: relative;
+            }
+            .border {
+              z-index: 1;
+              background-size: cover;
+            }
+          }
+          figcaption {
+            font-size: 1.125rem;
+            line-height: 1.15rem;
+            cite {
+              font-size: 1rem;
+              line-height: 1.15rem;
+            }
+          }
+        }
+      }
+      .img-container {
+        display: none;
+      }
+    }
+
+    @media (max-width: @sm) {
+      figure {
+        text-align: center;
+      }
+      .caption-group {
+        justify-content: center;
+        flex-wrap: wrap;
+        .img-container.mobile {
+          margin: 0;
+          width: 35%;
+        }
+        figcaption {
+          margin-top: 1rem;
+          text-align: center;
+          cite {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  &--simple {
+    //relative wrapping container to hold absolute testimonials
+    .wrapper {
+      z-index: 1;
+      position: relative;
+    }
+    //buttons
+    .simpleButtonUp,
+    .simpleButtonDown {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 99%;
+      transition: background-color 0.25s;
+
+      &:focus {
+        outline: 0 !important;
+      }
+
+      i {
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+    .simpleButtonUp.mobile {
+      display: none;
+    }
+
+    //each individual testimonial
+    .testimonial {
+      position: absolute;
+      background-color: @white;
+      border-radius: 1.33rem;
+      padding: 2rem;
+      transition: all 1s;
+      width: 100%;
+      will-change: transform, opacity;
+
+      //opacity settings for the first three (visible) testimonials
+      @cardIndex_1_Opactiy: 1;
+      @cardIndex_2_Opactiy: 0.66;
+      @cardIndex_3_Opactiy: 0.33;
+
+      //acf repeater prevents more than 10
+      @iterations: 10;
+
+      //loop through and assign z-index values
+      .mixin-loop (@index) when (@index > 0) {
+        &[data-index='@{index}'] {
+          z-index: @index;
+          //defaults used in animations
+          opacity: 0;
+          transform: translateY(-1.25rem);
+        }
+        .mixin-loop(@index - 1);
+      }
+      .mixin-loop(@iterations);
+
+      //first visible testimonial
+      &[data-inverse-index='1'] {
+        opacity: @cardIndex_1_Opactiy;
+        transform: translateY(0);
+        //top: 0 needed for proper animation
+        top: 0;
+        display: block;
+      }
+
+      //second visible testimonial
+      &[data-inverse-index='2'] {
+        opacity: @cardIndex_2_Opactiy;
+        transform: translateY(0);
+        top: 1.25rem;
+        display: block;
+      }
+
+      //third visible testimonial
+      &[data-inverse-index='3'] {
+        opacity: @cardIndex_3_Opactiy;
+        transform: translateY(0);
+        top: 2.5rem;
+        display: block;
+      }
+
+      //quote
+      blockquote {
+        margin: 0;
+        padding: 0;
+        color: @charcoal;
+        font-size: 3.25rem;
+        line-height: 3.75rem;
+        font-weight: 900;
+        p {
+          margin-top: 0;
+          margin-bottom: 1.5rem;
+        }
+        p:first-child {
+          &::before {
+            content: '"';
+            display: inline-block;
+          }
+        }
+        p:last-child {
+          &::after {
+            content: '"';
+            display: inline-block;
+          }
+        }
+      }
+
+      //attributions
+      figcaption {
+        color: @purple;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+        font-weight: 900;
+        display: block;
+
+        cite {
+          font-style: normal;
+          font-weight: 900;
+          color: @charcoal;
+          opacity: 0.5;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          display: block;
+        }
+      }
+    }
+
+    @media (max-width: @md) {
+      .simpleButtonUp.desktop {
+        display: none;
+      }
+      .simpleButtonUp.mobile {
+        display: inline-block;
+      }
+      .testimonial {
+        figure {
+          margin: 0;
+          width: 100%;
+
+          blockquote {
+            font-size: 1.5rem;
+            line-height: 2rem;
+          }
+          figcaption {
+            font-size: 1.125rem;
+            line-height: 1.15rem;
+            cite {
+              font-size: 1rem;
+              line-height: 1.15rem;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: @sm) {
+      .testimonial {
+        padding-bottom: 0;
+
+        figure {
+          text-align: center;
+        }
+        figcaption {
+          margin-top: 1rem;
+          text-align: center;
+          cite {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  &--footerWrapper {
+    display: flex;
+    margin-top: 3rem;
+    align-items: flex-start;
+
+    &.hasCTA {
+      justify-content: space-between;
+    }
+    &.noCTA {
+      justify-content: flex-end;
+    }
+
+    a.cta {
+      font-family: 'Urbanist', sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 1rem;
+      line-height: 1.42857;
+      border-radius: 1.25rem;
+      color: @white;
+      cursor: pointer;
+      display: block;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      word-break: break-word;
+      box-sizing: border-box;
+      background-color: @teal;
+      padding: 0.5714rem 0.8rem;
+    }
+    .buttons {
+      display: inline-block;
+    }
+    .simpleButtonUp {
+      margin-left: 0.825rem;
+    }
+  }
+}

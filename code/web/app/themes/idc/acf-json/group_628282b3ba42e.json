@@ -1,0 +1,110 @@
+{
+    "key": "group_628282b3ba42e",
+    "title": "Block - Partners",
+    "fields": [
+        {
+            "key": "field_628282b3cffe3",
+            "label": "Select Layout Theme",
+            "name": "select_layout_theme",
+            "type": "select",
+            "instructions": "Select the layout theme to apply to this Partners block. The layout theme affects the headline and button used in the block. Use the left-aligned layout to show the headline on the left and the button on the right. Use the center-aligned layout to show the headline and button aligned to the center.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "align-left": "Left-Aligned",
+                "align-center": "Center-Aligned"
+            },
+            "default_value": "align-center",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6283f5e87e46a",
+            "label": "Partner Logos",
+            "name": "partner_logos",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 3,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Add Partner Logo",
+            "sub_fields": [
+                {
+                    "key": "field_6283f5f07e46b",
+                    "label": "Logo Image",
+                    "name": "logo_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6283f6057e46c",
+                    "label": "Partner Link",
+                    "name": "partner_link",
+                    "type": "link",
+                    "instructions": "Add a link if you'd like the logo to link somewhere.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/partners"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1652828060
+}

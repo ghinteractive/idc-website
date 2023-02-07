@@ -1,0 +1,63 @@
+{
+    "key": "group_62bc78e4bb8e0",
+    "title": "Gated Form Settings",
+    "fields": [
+        {
+            "key": "field_62bc793f20199",
+            "label": "Gated Headline",
+            "name": "gated_headline",
+            "type": "text",
+            "instructions": "Headline for the Gated Form.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_62bc796e2019a",
+            "label": "Gated Content",
+            "name": "gated_content",
+            "type": "textarea",
+            "instructions": "Descriptive copy for the Gated Form.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-gated-form-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1656519277
+}

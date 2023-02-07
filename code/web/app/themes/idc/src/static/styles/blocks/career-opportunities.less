@@ -1,0 +1,139 @@
+/*
+    Name:               career-opportunities.less
+    Description:        Specific styles for the Career Opportunities block
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) '../fontawesome/fontawesome';
+@import (reference) '../fontawesome/regular';
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Career Opportunities Block **/
+.c-career-opportunities-block {
+    width: 100%;
+    padding: 4rem 1.25rem;
+    background: fade(@teal, 15%);
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        *:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__results {
+        margin: 4rem 0 0;
+        padding: 0;
+        list-style: none;
+
+        &-empty {
+            display: none;
+        }
+    }
+
+    &__filter {
+        margin-bottom: 1.5rem;
+
+        label {
+            color: @charcoal;
+            font-weight: 900;
+        }
+
+        .field {
+            background: #fff;
+        }
+    }
+
+    &__secondary-cta {
+        color: @teal;
+        font-weight: 900;
+        text-decoration: none;
+        margin-top: auto;
+
+        &::after {
+            content: @fa-var-chevrons-right;
+            color: @purple;
+            .far;
+        }
+    }
+
+    @media (min-width: @md) {
+        padding: 5.5rem 10rem;
+
+        &__inner {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        &__content {
+            width: 30%;
+        }
+
+        &__results {
+            width: 60%;
+            margin-top: 0;
+        }
+    }
+}
+
+.job-posting {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    color: @charcoal;
+    border-radius: 4px 42px 42px 4px;
+    position: relative;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+    }
+
+    &__meta {
+        margin: 0;
+
+        span {
+            color: @teal;
+            opacity: 0.25;
+            margin: 0 0.5rem;
+        }
+    }
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+
+        i {
+            font-style: normal;
+        }
+
+        .fa-circle {
+            color: @teal;
+        }
+
+        .fa-chevrons-right {
+            transition: padding-left 250ms;
+        }
+    }
+
+    &:hover .fa-chevrons-right {
+        padding-left: 0.75rem;
+    }
+}

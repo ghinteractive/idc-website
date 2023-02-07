@@ -1,0 +1,21 @@
+{
+    "name": "garrisonhughes/gh-wp-base-theme",
+    "type": "wordpress-theme",
+    "license": "MIT",
+    "description": "The official Garrison Hughes Interactive base Wordpress theme. Powered by npm, Gulp and Bower.",
+    "homepage": "http://www.garrisonhughes.com",
+    "authors": [{
+        "name": "Garrison Hughes Interactive",
+        "email": "interactive@garrisonhughes.com",
+        "homepage": "http://www.garrisonhughes.com"
+    }],
+    "keywords": [],
+    "config": {
+        "vendor-dir": "lib/vendor"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0",
+        "aws/aws-sdk-php": "^3.29"
+    }
+}

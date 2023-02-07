@@ -1,0 +1,102 @@
+/*
+    Name:               animated-chart.less
+    Description:        Specific styles for the animated chart blocks
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** WP Admin Preview **/
+.acf-block-preview {
+    div[class*='c-animated-chart-block'] {
+        .chartColor-default {
+            path {
+                stroke: @charcoal;
+            }
+            .chart-circle {
+                circle {
+                    stroke: @charcoal;
+                }
+            }
+            .chart-bar {
+                g path {
+                    fill: @charcoal !important;
+                }
+            }
+        }
+        .chartColor-gold {
+            path {
+                stroke: @gold;
+            }
+            .chart-circle {
+                circle {
+                    stroke: @gold;
+                }
+            }
+            .chart-bar {
+                g path {
+                    fill: @gold !important;
+                }
+            }
+        }
+        .chartColor-purple {
+            path {
+                stroke: @purple;
+            }
+            .chart-circle {
+                circle {
+                    stroke: @purple;
+                }
+            }
+            .chart-bar {
+                g path {
+                    fill: @purple !important;
+                }
+            }
+        }
+        .chartColor-teal {
+            path {
+                stroke: @teal;
+            }
+            .chart-circle {
+                circle {
+                    stroke: @teal;
+                }
+            }
+            .chart-bar {
+                g path {
+                    fill: @teal !important;
+                }
+            }
+        }
+    }
+}
+
+/** Animated Chart Block **/
+.c-animated-chart-block {
+    /* colorize animated lottie svgs */
+    &--circle, &--bar, &--line {
+        &.chartColor-default {
+            path {
+                stroke: @charcoal;
+            }
+        }
+        &.chartColor-gold {
+            path {
+                stroke: @gold;
+            }
+        }
+        &.chartColor-purple {
+            path {
+                stroke: @purple;
+            }
+        }
+        &.chartColor-teal {
+            path {
+                stroke: @teal;
+            }
+        }
+    }
+}

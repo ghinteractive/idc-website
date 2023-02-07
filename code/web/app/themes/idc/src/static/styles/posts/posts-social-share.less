@@ -1,0 +1,84 @@
+/*
+    Name:               posts-social-share.less
+    Description:        Specific styles for the social share post component
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Social Share Component **/
+.c-social-share {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    h5 {
+        margin: 0;
+    }
+
+    /* Social Icon Container */
+    &__social-icons {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Social Icon */
+    &__social-icon {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        color: @teal;
+        text-decoration: none;
+        z-index: 1;
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        &::after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            content: '';
+            top: 0;
+            left: 0;
+            background: @grayOne;
+            z-index: -1;
+        }
+    }
+}
+
+@media (min-width: 450px) {
+    /** Social Icon Component **/
+    .c-social-share {
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 1400px) {
+    /** Social Icon Component **/
+    .c-social-share {
+        position: fixed;
+        top: 50%;
+        right: 1.5rem;
+        flex-direction: column;
+
+        /* Social Icon Container */
+        &__social-icons {
+            flex-direction: column;
+        }
+    }
+}

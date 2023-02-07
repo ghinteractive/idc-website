@@ -1,0 +1,52 @@
+{
+    "key": "group_628e85b1eae06",
+    "title": "Block - Masthead Blog",
+    "fields": [
+        {
+            "key": "field_628e85e813eec",
+            "label": "Featured Post - Top",
+            "name": "featured_post",
+            "type": "relationship",
+            "instructions": "Select a post from News & Insights to be featured at the top of the News & Insights landing page.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 1,
+            "max": 2,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/masthead-blog"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1654718233
+}

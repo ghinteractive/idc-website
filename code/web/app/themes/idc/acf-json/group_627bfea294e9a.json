@@ -1,0 +1,107 @@
+{
+    "key": "group_627bfea294e9a",
+    "title": "Block - Animated Chart",
+    "fields": [
+        {
+            "key": "field_627c05b31ebea",
+            "label": "Select Color Theme",
+            "name": "select_color_theme",
+            "type": "select",
+            "instructions": "Select the color theme to apply to this Animated Chart. The color theme affects the lines drawn within the chart.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "gold": "Gold",
+                "purple": "Purple",
+                "teal": "Teal"
+            },
+            "default_value": "teal",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_627c05f71ebeb",
+            "label": "Select Chart Type",
+            "name": "select_chart_type",
+            "type": "select",
+            "instructions": "Select the type of Animated Chart.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "circle": "Circle",
+                "bar": "Bar",
+                "line": "Line"
+            },
+            "default_value": "circle",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_627c1e0079807",
+            "label": "Number Chart Value",
+            "name": "number_chart_value",
+            "type": "number",
+            "instructions": "Enter the percentage the circle should be filled. This percentage is not reflected in the preview seen here in the admin but will be shown on the published version of this page.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_627c05f71ebeb",
+                        "operator": "==",
+                        "value": "circle"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 90,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 100,
+            "step": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/animated-chart"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1655389415
+}

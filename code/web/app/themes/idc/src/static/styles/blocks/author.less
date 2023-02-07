@@ -1,0 +1,84 @@
+/*
+    Name:               author.less
+    Description:        Specific styles for the masthead blocks
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Author Block **/
+.c-author-block {
+
+    &__intro {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1.75rem;
+        row-gap: 1.75rem;
+        align-items: center;
+
+        h1 {
+            margin: 0;
+        }
+
+        .wp-block-button {
+            padding-top: 0;
+        }
+    }
+
+    &__feat-img {
+        position: relative;
+        max-width: 10rem;
+        max-height: 10rem;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        &::before {
+            border: 1px dashed @purple;
+            top: 3px;
+            left: 3px;
+        }
+        &::after {
+            border: 1px solid @teal;
+            top: -3px;
+            left: -3px;
+        }
+    }
+
+    &__feat-img-wrapper {
+        position: relative;
+        width: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        .boxShadowIDC;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Large */
+@media (min-width: @lg) {
+    /** Author Block **/
+    .c-author-block {
+
+        &__intro {
+            flex-wrap: nowrap;
+        }
+    }
+}

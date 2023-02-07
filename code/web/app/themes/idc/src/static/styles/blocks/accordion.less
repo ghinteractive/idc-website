@@ -1,0 +1,74 @@
+/*
+	Name:				        accordion.less
+	Description:        Specific styles for the Accordion blocks
+	Version:            1.0.0
+	Author:             Garrison Hughes
+*/
+
+@import (reference) '../variables';
+@import (reference) '../mixins';
+
+/** Accordion Block **/
+.c-accordion-block {
+  &__accordion {
+    background-color: fade(@teal, 15);
+    transition: background-color 0.15s ease;
+    position: relative;
+    border-radius: 0.5rem;
+    z-index: 1;
+    padding: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border: 1px solid @charcoal;
+      opacity: 0;
+      border-radius: 0.5rem;
+      transition: opacity 0.15s ease 0.15s;
+      z-index: -1;
+    }
+
+    &--active {
+      background-color: white;
+      .boxShadowIDC;
+
+      &::after {
+        opacity: 0.15;
+        transition: opacity 0.15s ease 0;
+      }
+    }
+  }
+
+  &__headline {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    color: @charcoal;
+    transition: color 0.25s ease-out;
+
+    &--show {
+      color: @teal;
+      .c-accordion-block__icon {
+        transform: rotate(-180deg) translate3d(0, -50%, 0);
+      }
+    }
+  }
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform-origin: top;
+    transform: translate3d(0, -50%, 0);
+    transition: all 0.25s ease-out;
+  }
+
+  P:last-of-type {
+    margin-bottom: 0;
+  }
+}

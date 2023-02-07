@@ -1,0 +1,116 @@
+/*
+    Name:               footer.less
+    Description:        Footer specific styles for the theme.
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) 'variables';
+
+@gap: 2.875rem;
+
+/* Footer elements
+----------------------------*/
+.c-footer {
+  position: relative;
+  overflow-x: hidden;
+
+  &--flex {
+    display: flex;
+    column-gap: 2rem;
+    flex-direction: column;
+  }
+
+  &__col {
+    flex: 1;
+    display: flex;
+    column-gap: 3.5rem;
+
+    /* hide on mobile */
+    &--right {
+      display: none;
+    }
+  }
+
+  &__copyright {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+    font-weight: 800;
+    column-gap: @gap;
+  }
+
+  /* Legal Nav */
+  &__nav {
+    z-index: 2;
+
+    .menu {
+      list-style: none;
+      display: flex;
+      column-gap: @gap;
+    }
+
+    /* This targets the div container auto applied to menu widget and enforces the equal height */
+    &--widget div {
+      height: 100%;
+    }
+
+    &--widget .menu,
+    .menu--footer {
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      row-gap: 1.25rem;
+    }
+
+    .main-menu-link,
+    a {
+      color: @white;
+      position: relative;
+    }
+
+    .main-menu-item:first-child::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      right: -(@gap / 2);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background: @teal;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+}
+
+/* Media Queries
+----------------------------*/
+/* Small = 576px */
+@media (min-width: @sm) {
+  .c-footer {
+    &__col {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+
+      &--right {
+        display: flex;
+      }
+    }
+  }
+}
+
+/* Medium = 786px */
+// @media (min-width: @md) {
+@media (min-width: 850px) {
+  .c-footer {
+    &--flex {
+      flex-direction: row;
+    }
+
+    &__copyright {
+      justify-content: space-between;
+    }
+  }
+}

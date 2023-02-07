@@ -1,0 +1,334 @@
+/*
+    Name:               extend-blocks.less
+    Description:        Extended Blocks styles for the theme.
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+@import (reference) './fontawesome/fontawesome';
+@import (reference) './fontawesome/regular';
+@import (reference) './fontawesome/brands';
+@import (reference) 'variables';
+@import (reference) 'mixins';
+
+/** WordPress Core/Buttons */
+.wp-block-button {
+  padding: 1rem 0;
+
+  &__link {
+    font-family: 'Urbanist', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1rem;
+    line-height: 1.42857;
+    border-radius: 1.25rem;
+    position: relative;
+
+    &.has-text-color {
+      &:focus,
+      &:active,
+      &:visited {
+        color: @gray;
+      }
+    }
+
+    &.has-background {
+      .boxShadowIDC;
+      padding: 0.5714rem 0.8rem;
+    }
+
+    &:not(.has-background) {
+      padding: 0.5714rem 0;
+      background-color: transparent;
+
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+        color: inherit;
+      }
+
+      &:not(.has-text-color) {
+        color: @teal;
+      }
+    }
+  }
+}
+
+/** IDC Button Text & Icon Left */
+.is-style-idc-button-left,
+.is-style-idc-button-text-left {
+  .wp-block-button__link {
+    padding-left: 2rem;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0.75rem;
+      color: @purple;
+      transform: translateY(-50%);
+      .far;
+      .fa-icon;
+      content: @fa-var-chevrons-left;
+    }
+  }
+}
+.is-style-idc-button-left .wp-block-button__link {
+  content: '';
+  border: 50%;
+}
+
+/** IDC Button Text & Icon Right */
+.is-style-idc-button-right,
+.is-style-idc-button-text-right {
+  .wp-block-button__link {
+    padding-right: 2rem;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      color: @purple;
+      transform: translateY(-50%);
+      .far;
+      .fa-icon;
+      content: @fa-var-chevrons-right;
+    }
+  }
+}
+
+/** WordPress Core/Lists */
+ol.is-style-idc-list-custom,
+ul.is-style-idc-list-custom {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2.25rem;
+  line-height: 1.5;
+
+  li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    color: @charcoal;
+
+    &::marker {
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding-top: 3px;
+      color: @purple;
+      line-height: 1;
+      text-align: center;
+      border: 2px solid @teal;
+      border-radius: 50%;
+    }
+  }
+
+  ol,
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 0 0 2rem;
+    line-height: 1.5;
+  }
+
+  ol > li {
+    counter: 1;
+    counter-increment: i;
+
+    &::before {
+      .fas;
+      content: counter(i);
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+  }
+
+  ul > li::before {
+    .far;
+    content: @fa-var-check;
+    padding-top: 4px;
+    font-size: 0.8rem;
+  }
+}
+
+ol.is-style-idc-list-custom > li {
+  counter: 1;
+  counter-increment: i;
+
+  &::before {
+    .fas;
+    content: counter(i);
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+}
+
+ul.is-style-idc-list-custom > li::before {
+  .far;
+  content: @fa-var-check;
+  padding-top: 4px;
+  font-size: 0.8rem;
+}
+
+/** Styles for Widget button circle animate */
+.w-btn-circle-container {
+  .w-btn-circle {
+    .wp-block-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        &::before {
+          background: @teal;
+          animation: c_rotation 0.5s linear !important;
+        }
+        &::after {
+          width: 188px;
+          height: 188px;
+          animation: c_rotation 0.5s linear !important;
+        }
+      }
+
+      &::before {
+        pointer-events: none;
+        transition: all 1s;
+        content: '';
+
+        //0-100% of color line length in circle
+        @slice: 18%;
+        //0-100% of transparent line length in circle
+        @gap: (100% - @slice * 4) / 4;
+
+        background: conic-gradient(
+          @gold 0 0%,
+          @gold 0 @slice,
+          rgba(255, 255, 255, 0) 0 @slice,
+          rgba(255, 255, 255, 0) 0 @slice + @gap,
+          @white 0 @slice + @gap,
+          @white 0 @slice * 2 + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 2 + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 2 + @gap + @gap,
+          @teal 0 @slice * 2 + @gap + @gap,
+          @teal 0 @slice * 3 + @gap + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 3 + @gap + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 3 + @gap + @gap + @gap,
+          @white 0 @slice * 3 + @gap + @gap + @gap,
+          @white 0 @slice * 4 + @gap + @gap + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 4 + @gap + @gap + @gap,
+          rgba(255, 255, 255, 0) 0 @slice * 4 + @gap + @gap + @gap + @gap
+        );
+
+        border-radius: 99%;
+        position: relative;
+        width: 165px;
+        height: 165px;
+        animation: cc_rotation 20s infinite linear;
+      }
+
+      &::after {
+        pointer-events: none;
+        transition: all 0.25s;
+        content: '';
+        width: 506px;
+        height: 506px;
+        position: absolute;
+        border: 2px dashed fade(@teal, 25%);
+        border-radius: 99%;
+        animation: cc_rotation 20s infinite linear;
+      }
+
+      a {
+        box-shadow: none;
+        padding: 1.25rem;
+        display: flex;
+        background-color: @purple;
+        border: 15px solid @purpleDark;
+        width: 160px;
+        height: 160px;
+        color: @white;
+        text-decoration: none;
+        border-radius: 99%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        position: absolute;
+        z-index: 2;
+      }
+    }
+  }
+}
+@keyframes cc_rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
+@keyframes c_rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Separator Styles
+----------------------------*/
+.wp-block-separator {
+  &.is-style-idc-dots-small,
+  &.is-style-idc-dots-full {
+    height: 2px;
+    border-bottom: 2px dashed #fff;
+    position: relative;
+    background: linear-gradient(#ffffff 0 0) padding-box, linear-gradient(to right, #3cafab 0%, #771b61 100%) border-box;
+  }
+  &.is-style-idc-dots-small {
+    display: inline-block;
+    width: 4rem !important;
+  }
+
+  &.is-style-idc-dots-full {
+    max-width: 75rem;
+    width: 100% !important;
+  }
+}
+
+/* Align Styles
+----------------------------*/
+.alignfull {
+  .full-width;
+}
+
+/* Icon Blocks
+----------------------------*/
+.icon-container {
+  width: 88px;
+  border-radius: 1.25rem;
+
+  &.has-background-color {
+    padding: 1rem;
+  }
+}
+
+/* Media Queries
+----------------------------*/
+@media (max-width: @md) {
+  /** show widget button circle animate **/
+  .w-btn-circle-container {
+    display: block;
+    visibility: visible;
+  }
+}

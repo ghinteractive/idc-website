@@ -1,0 +1,70 @@
+image: php:7.4-cli-alpine
+
+definitions:
+  steps:
+    - step: &docker-build-and-deploy
+        name: Docker Build
+        image: amazon/aws-cli:2.2.1
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - TAG=${BITBUCKET_BRANCH:-$BITBUCKET_TAG}
+          - CLEANTAG=${TAG#*/}
+          - IMAGENAME=${AWS_ECR_URI}/${AWS_ECR_IMAGE}:${AWS_ECR_TAG:-$CLEANTAG}
+          - echo "export IMAGENAME=$IMAGENAME" >> set_env.sh
+          - aws configure set aws_access_key_id "${AWS_KEY}"
+          - aws configure set aws_secret_access_key "${AWS_SECRET}"
+          - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ECR_URI}
+          - >-
+            docker build
+            -t ${IMAGENAME}
+            --build-arg FONTAWESOME_NPM_AUTH_TOKEN=${FONTAWESOME_NPM_AUTH_TOKEN}
+            --build-arg ACF_PRO_KEY=${ACF_PRO_KEY}
+            ./code
+          - docker push ${IMAGENAME}
+
+pipelines:
+  branches:
+    master:
+      - step:
+          <<: *docker-build-and-deploy
+          name: Docker Build Latest
+          deployment: staging
+          after-script:
+            - pipe: atlassian/aws-eks-kubectl-run:1.4.1
+              variables: &kube-connect
+                AWS_ACCESS_KEY_ID: ${AWS_KEY}
+                AWS_SECRET_ACCESS_KEY: ${AWS_SECRET}
+                AWS_DEFAULT_REGION: "us-east-1"
+                CLUSTER_NAME: "${AWS_EKS_CLUSTER}"
+                KUBECTL_COMMAND: >-
+                  rollout restart
+                  deploy/${AWS_ECR_IMAGE}-bedrock-project
+                  deploy/${AWS_ECR_IMAGE}-varnish
+                  -n ${AWS_EKS_NAMESPACE:-$BITBUCKET_DEPLOYMENT_ENVIRONMENT}
+                DEBUG: "true"
+  tags:
+    release/*:
+      - step:
+          <<: *docker-build-and-deploy
+          name: Docker Build Release
+          deployment: production
+          after-script:
+            - source set_env.sh
+            - pipe: atlassian/aws-eks-kubectl-run:1.4.1
+              variables:
+                <<: *kube-connect
+                KUBECTL_COMMAND: >-
+                  set image deploy/${AWS_ECR_IMAGE}-bedrock-project
+                  bedrock-project-wordpress=${IMAGENAME}
+                  init-application=${IMAGENAME}
+                  -n ${AWS_EKS_NAMESPACE:-$BITBUCKET_DEPLOYMENT_ENVIRONMENT}
+            - pipe: atlassian/aws-eks-kubectl-run:1.4.1
+              variables:
+                <<: *kube-connect
+                KUBECTL_COMMAND: >-
+                  rollout restart
+                  deploy/${AWS_ECR_IMAGE}-varnish
+                  -n ${AWS_EKS_NAMESPACE:-$BITBUCKET_DEPLOYMENT_ENVIRONMENT}

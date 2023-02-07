@@ -1,0 +1,159 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "bedrock-project.fullname" . }}
+  labels:
+    {{- include "bedrock-project.labels" . | nindent 4 }}
+  {{- with .Values.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "bedrock-project.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "bedrock-project.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/deployment: {{ include "bedrock-project.fullname" . }}-deploy
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "bedrock-project.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}-wordpress
+          image: {{ include "bedrock-project.imageName" .Values.wordpress.image }}
+          imagePullPolicy: {{ .Values.wordpress.image.pullPolicy }}
+          ports:
+            - name: wordpress
+              containerPort: {{ .Values.wordpress.port }}
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: application
+            - mountPath: /var/www/html/uploads
+              name: uploads
+            - mountPath: /usr/local/etc/php/conf.d/gh-custom.ini
+              name: webserver-config
+              subPath: php.ini
+            {{- if .Values.elasticsearch.security.enabled }}
+            - mountPath: /usr/local/share/ca-certificates/root-ca.crt
+              name: ca-certificate
+              subPath: ca.crt
+              readOnly: true
+            {{- end }}
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-mariadb-secrets
+                  key: mariadb-password
+            {{- with .Values.elasticsearch }}
+            {{- if .enabled }}
+            - name: ELASTICSEARCH_INDEX_PREFIX
+              value: {{ $.Release.Name }}
+            - name: ELASTICSEARCH_INDEX_NAME
+              value: {{ $.Release.Namespace }}
+            {{- if .security.enabled }}
+            - name: ELASTICSEARCH_USERNAME
+              value: {{ .security.auth.username }}
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $.Release.Name }}-elasticsearch-secrets
+                  key: password
+            {{- end }}
+            {{- if .https.enabled }}
+            - name: ELASTICSEARCH_SSL_PATH
+              value: /etc/ssl/cert.pem
+            {{- end }}
+            {{- end }}
+            {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "bedrock-project.fullname" . }}-wp-config
+          lifecycle:
+            postStart:
+              exec:
+                command: [ "/bin/sh", "-c", "update-ca-certificates" ]
+        - name: {{ .Chart.Name }}-nginx
+          image: {{ include "bedrock-project.imageName" .Values.nginx.image }}
+          imagePullPolicy: {{ .Values.nginx.image.pullPolicy }}
+          ports:
+            - name: nginx
+              containerPort: {{ .Values.nginx.port }}
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: application
+            - mountPath: /var/www/html/uploads
+              name: uploads
+            - mountPath: /etc/nginx/conf.d/default.conf
+              name: webserver-config
+              subPath: nginx.conf
+        {{- if .Values.varnish.enabled }}
+        - name: {{ .Chart.Name }}-varnish
+          image: {{ include "bedrock-project.imageName" .Values.varnish.image }}
+          imagePullPolicy: {{ .Values.varnish.image.pullPolicy }}
+          ports:
+            - name: varnish
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/varnish/default.vcl
+              name: webserver-config
+              subPath: default.vcl
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: varnish
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: varnish
+        {{- end }}
+      initContainers:
+        - name: init-application
+          image: {{ include "bedrock-project.imageName" .Values.wordpress.image }}
+          imagePullPolicy: {{ .Values.wordpress.image.pullPolicy }}
+          command: [ "sh", "-c", "cp -r /var/www/html/* /entrypoint && chown www-data:www-data -R /entrypoint" ]
+          volumeMounts:
+            - name: application
+              mountPath: /entrypoint
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- include "bedrock-project.nodeAffinity" . | nindent 6 }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: application
+          emptyDir: {}
+        - name: uploads
+          {{- if .Values.uploadsPVC.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ include "bedrock-project.fullname" . }}-uploads
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        - name: webserver-config
+          configMap:
+            name: {{ include "bedrock-project.fullname" . }}-webserver
+        {{- with .Values.elasticsearch.security }}
+        {{- if .enabled  }}
+        - name: ca-certificate
+          configMap:
+            name: root-ca-certificate
+        {{- end}}
+        {{- end}}

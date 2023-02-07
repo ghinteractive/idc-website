@@ -1,0 +1,88 @@
+/* prettier-ignore */
+/*
+    Name:               functions.less
+    Description:        Functions styles for the theme.
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+/**
+* Colors Array
+*/
+@colors: charcoal #50505a, dark #000000, gold #f1ae4b, gray-one #eaebec, gray-two #dadbdc, gray-three #cacbcc, purple #771b61, red #ff0000, teal #3cafab, teal-light #339999,
+  teal-medium #666699, teal-dark #663366, white #ffffff;
+
+/**
+* Icon Background colors (Dropshadow) Array
+*/
+@iconBgColors: charcoal #50505a rgba(80, 80, 90, 0.25), gold #f1ae4b rgba(241, 174, 75, 0.25), teal #3cafab rgba(60, 175, 171, 0.3), teal-lite #339999 rgba(75, 138, 152, 0.25),
+  teal-medium #666699 rgba(90, 101, 134, 0.25), teal-dark #663366 rgba(104, 64, 116, 0.25), purple #771b61 rgba(119, 27, 97, 0.25);
+
+/**
+* Text Sizes Array
+*/
+@textSizes: text-micro 0.75rem 1.669 400, text-mini 0.875rem 1.572 400, text-small 1rem 1.5 400, text-md 1.125rem 1.4445 400, text-big 1.25rem 1.4 400,
+  text-display 3rem 1.16667 900;
+
+/**
+* Button Types Array
+*/
+@buttonType: idc-button, idc-button-right, idc-button-left, idc-button-text-right, idc-button-text-left;
+
+/**
+* Variable for bg and text color classes
+*/
+@prefix: ~'has';
+@bgsuffix: ~'background-color';
+@colorsuffix: ~'color';
+@textsuffix: ~'font-size';
+
+/**
+* Functions to loop through an array of colors and output their values for the background and text color of gutenberg blocks.
+*/
+.createColorClass(@iterator:1) when(@iterator <= length(@colors)) {
+  @name: extract(extract(@colors, @iterator), 1);
+  .@{prefix}-@{name}-@{bgsuffix} {
+    background-color: extract(extract(@colors, @iterator), 2);
+  }
+  .@{prefix}-@{name}-@{colorsuffix} {
+    color: extract(extract(@colors, @iterator), 2);
+  }
+  .createColorClass(@iterator + 1);
+}
+.createColorClass();
+
+/**
+* Functions to loop through an array of custom text classnames and out their sizes.
+*/
+.createTextClass(@iterator:1) when(@iterator <= length(@textSizes)) {
+  @name: extract(extract(@textSizes, @iterator), 1);
+
+  .@{prefix}-@{name}-@{textsuffix} {
+    font-family: 'Urbanist', sans-serif;
+    font-style: normal;
+    font-weight: extract(extract(@textSizes, @iterator), 4);
+    letter-spacing: 0;
+    font-size: extract(extract(@textSizes, @iterator), 2);
+    line-height: extract(extract(@textSizes, @iterator), 3);
+  }
+  .createTextClass(@iterator + 1);
+}
+.createTextClass();
+
+/**
+* Variable for Icon Blocks bg-color classes
+*/
+@iconClass: ~'icon-container';
+/**
+* Functions to loop through an array of icon bg-colors and output their values for the background of icon blocks.
+*/
+.createIconBgClass(@iterator:1) when(@iterator <= length(@iconBgColors)) {
+  @name: extract(extract(@iconBgColors, @iterator), 1);
+  .@{iconClass}.@{prefix}-@{name}-@{bgsuffix} {
+    background-color: extract(extract(@iconBgColors, @iterator), 2);
+    box-shadow: 0 18px 23px extract(extract(@iconBgColors, @iterator), 3);
+  }
+  .createIconBgClass(@iterator + 1);
+}
+.createIconBgClass();

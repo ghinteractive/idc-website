@@ -1,0 +1,20 @@
+# Docker files
+.dockerignore
+Dockerfile
+
+# Environment
+.env
+.env.*
+
+# Package Managers
+**/vendor
+**/node_modules
+**/bower_components
+
+# Wordpress
+web/app/plugins/*
+web/app/uploads/*
+web/wp
+
+# Theme Files
+web/app/themes/idc/dist

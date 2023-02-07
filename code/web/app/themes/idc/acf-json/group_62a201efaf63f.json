@@ -1,0 +1,84 @@
+{
+    "key": "group_62a201efaf63f",
+    "title": "Block - Video",
+    "fields": [
+        {
+            "key": "field_62a20207cd84c",
+            "label": "Video URL",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "Enter the Youtube or Vimeo URL for this video. This URL will automatically be used to create the proper Embed code to add the video player into the page.\r\nUse the following URL formats:\r\nVimeo example: https:\/\/vimeo.com\/123456\r\nYouTube example: https:\/\/www.youtube.com\/watch?v=123456",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_62a2021fcd84d",
+            "label": "Video Poster Image",
+            "name": "video_poster_image",
+            "type": "image",
+            "instructions": "Select an image to display over the video and under the video play button for this video. If you don't select an image, only the play button will appear.\r\nAn image in a 16:9 ratio is recommended.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_62a75ad5caad2",
+            "label": "Video Caption",
+            "name": "video_caption",
+            "type": "textarea",
+            "instructions": "Option to display a caption under the video.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/video-block"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1655135779
+}

@@ -1,0 +1,120 @@
+/*
+    Name:               inputs.less
+    Description:        Inputs, buttons and other form element specific styles for the theme.
+    Version:            1.0.0
+    Author:             Garrison Hughes
+*/
+
+@import (reference) 'fontawesome/regular';
+@import (reference) 'variables';
+
+/**
+* Button Styles
+*/
+button,
+.button {
+  display: inline-block;
+  border: 0 none;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Urbanist', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.42857;
+  padding: 0.5714rem 0.8rem;
+}
+
+.field {
+  width: 100%;
+  position: relative;
+
+  &::before,
+  &::after {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  &::before {
+    left: 1rem;
+  }
+
+  &::after {
+    right: 1rem;
+  }
+
+  &--select {
+    select {
+      display: block;
+      width: 100%;
+      padding: 0.8125rem 1rem;
+      background: transparent;
+      appearance: none;
+      border: 0 none;
+      position: relative;
+      z-index: 1;
+    }
+
+    &::before,
+    &::after {
+      content: @fa-var-caret-down;
+      color: @teal;
+      .far;
+    }
+  }
+
+  &--icon-left::before,
+  &--icon-right::after {
+    display: block;
+  }
+}
+
+/** Search Results Form */
+.c-search-results__form {
+  .input {
+    background-color: rgba(60, 175, 171, 0.15);
+    position: relative;
+  }
+
+  input[type='text'] {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    padding: 0.8125rem 2.125rem 0.8125rem 1rem;
+    color: #50505a;
+    border: 0 none;
+    outline: 0 none;
+    appearance: none;
+    background-color: transparent;
+
+    &::placeholder {
+      color: @charcoal;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      color: @charcoal;
+    }
+
+    &::-ms-input-placeholder {
+      color: @charcoal;
+    }
+  }
+}
+/** Labels **/
+label.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
